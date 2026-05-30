@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useChatStore } from "../store";
-import { Users, Hash, UserPlus, Settings, LogOut, MessageSquare, Upload, Globe } from "lucide-react";
+import { Users, Hash, UserPlus, Settings, LogOut, MessageSquare, Upload, Globe, Copy, Link } from "lucide-react";
 import { cn } from "../lib/utils";
 
 export function Sidebar({ activeChatId, onSelectChat }: { activeChatId: string | null; onSelectChat: (id: string) => void }) {
@@ -135,6 +135,22 @@ export function Sidebar({ activeChatId, onSelectChat }: { activeChatId: string |
                               </button>
                           ))}
                       </div>
+                  </div>
+                  <div>
+                      <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">App Link</h3>
+                      <button
+                          onClick={() => {
+                              navigator.clipboard.writeText(window.location.href);
+                              // Optional: visual feedback could be added, but minimal is fine
+                          }}
+                          className="w-full flex items-center justify-between px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors group"
+                      >
+                          <div className="flex items-center gap-3">
+                              <Link className="w-4 h-4 text-gray-500 group-hover:text-indigo-500" />
+                              <span className="text-sm text-gray-700 dark:text-gray-300">Copy Website URL</span>
+                          </div>
+                          <Copy className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300" />
+                      </button>
                   </div>
               </div>
               <div className="p-4 border-t border-gray-200 dark:border-gray-800">
